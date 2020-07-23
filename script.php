@@ -4,8 +4,8 @@ $categorias = ["Infantil", "Adolescente", "Adulta"];
 $nome = $_POST["nome"];
 $idade = $_POST["idade"];
 
-var_dump($nome);
-var_dump($idade);
+// var_dump($nome);
+// var_dump($idade);
 echo "<br><br>";
 
 if ($idade >= 6 && $idade < 12) {
@@ -17,3 +17,4 @@ if ($idade >= 6 && $idade < 12) {
 } else {
     echo "O competidor " . $nome . " não tem idade para competir";
 }
+echo "<br>";
