@@ -5,19 +5,24 @@ $nome = $_POST["nome"];
 $idade = $_POST["idade"];
 
 echo "<br>";
-
 // Verifica se o nome e a idade foram preenchidos
 if (empty($nome) || empty($idade)) { //empty() verifica se uma variável está vazia
-	echo "TODOS OS CAMPOS DEVEM SER PREENCHIDOS";
+	echo "TODOS OS CAMPOS DEVEM SER PREENCHIDOS!";
 	return;
 }
 
 // Verifica se o nome tem um MINIMO e um MÁXIMO de caracteres
 if (strlen($nome) < 2) {			//strlen() CONTA quantos caracteres a variável tem
-	echo "O Nome deve conter pelo menos 2 caracteres";
+	echo "O Nome deve conter pelo menos 2 caracteres.";
 	return;
 } elseif (strlen($nome) > 40) {
-	echo "O Nome não pode conter mais de 40 caracteres";
+	echo "O Nome não pode conter mais de 40 caracteres.";
+	return;
+}
+
+// verifica se a variável é do tipo NUMERO
+if (!is_numeric($idade)) {
+	echo "O valor digitado DEVE ser um número.";
 	return;
 }
 
@@ -28,14 +33,13 @@ if ($idade > 100) {
 	return;
 }
 
-if ($idade >= 6 && $idade < 12) {
-	echo "O competidor " . $nome . " tem " . $idade . " anos  é da categoria " . $categorias[0];
-} elseif ($idade >= 12 && $idade < 18) {
-	echo "O competidor " . $nome . " tem " . $idade . " anos  é da categoria " . $categorias[1];
-} elseif ($idade >= 18) {
-	echo "O competidor " . $nome . " tem " . $idade . " anos  é da categoria " . $categorias[2];
-} else {
-	echo "O competidor " . $nome . " não tem idade para competir";
-}
 
-echo "<br>";
+if ($idade >= 6 && $idade < 12) {
+	echo "O competidor " . $nome . " tem " . $idade . " anos  é da categoria " . $categorias[0] . ".";
+} elseif ($idade >= 12 && $idade < 18) {
+	echo "O competidor " . $nome . " tem " . $idade . " anos  é da categoria " . $categorias[1] . ".";
+} elseif ($idade >= 18) {
+	echo "O competidor " . $nome . " tem " . $idade . " anos  é da categoria " . $categorias[2] . ".";
+} else {
+	echo "O competidor " . $nome . " tem apenas " . $idade . " anos e não pode competir!";
+}
