@@ -35,7 +35,7 @@ session_start();
                         //     $MensagemErro = "";
                         // };
 
-                        // Forma REDUZIDA  de executar
+                        // Forma REDUZIDA (operador TERNÁRIO) de executar
                         $MensagemErro = isset($_SESSION["ErroValidacaoDados"]) ? $_SESSION["ErroValidacaoDados"] : "";
 
                         if (!empty($MensagemErro)) {
