@@ -18,14 +18,14 @@ session_start();
 <body class="">
     <div class="container mt-3">
         <div class="row d-flex justify-content-center">
-            <div class="col-7 bg-info rounded border border-warning">
+            <div class="col-7 bg-info rounded border">
                 <div>
                     <h1 class="rounded shadow-sm m-3 text-center text-uppercase bg-warning">Cadastro de competidores
                     </h1>
                 </div>
 
                 <form class="text-center form m-2" action="script.php" method="post">
-                    <h5 class="font-weight-bold m-6 text-white bg-danger rounded shadow">
+                    <h5 class="font-weight-bold text-white bg-danger rounded shadow">
                         <?php
 
                         // Forma Clássica de executar
@@ -36,8 +36,8 @@ session_start();
                         // };
 
                         // Forma REDUZIDA (operador TERNÁRIO) de executar
-                        $MensagemErro = isset($_SESSION["ErroValidacaoDados"]) ? $_SESSION["ErroValidacaoDados"] : "";
-
+                        $MensagemErro = isset($_SESSION["ErroValidacaoDados"]) ? $_SESSION["ErroValidacaoDados"] : ""; // O comando isset verifica se uma variável foi inicializada
+                        // $MensagemErro = isset($_SESSION["ErroValidacaoDados"]) ? $_SESSION["ErroValidacaoDados"] : ""; 
                         if (!empty($MensagemErro)) {
                             echo $MensagemErro;
                         }
@@ -57,6 +57,21 @@ session_start();
                         <input class="btn btn-warning mt-3 font-weight-bold" type="submit" value="Enviar">
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-7">
+                <h6 class="text-white text-center mt-1 rounded border border-success bg-success">
+                    <?php
+                        $MensagemSucesso = isset($_SESSION['ValidacoesOK']) ? $_SESSION['ValidacoesOK'] : "";
+
+                        if(!empty($MensagemSucesso)){
+                            echo $MensagemSucesso;
+                        }
+                    ?>
+                </h6>
             </div>
         </div>
     </div>

@@ -14,8 +14,12 @@ echo "<br>"; // Pula uma linha APENAS para o texto não ficar colado no inicio d
 // 4º - Verifica se a idade do competidor é compatível com a competição
 
 // 1º - Verifica se TODOS os campos foram preenchidos
+$_SESSION['ErroValidacaoDados'] = "";
+$_SESSION['ValidacoesOK'] = "";
+
 if (empty($nome) || empty($idade)) { //empty() verifica se uma variável está vazia
 	$_SESSION['ErroValidacaoDados'] = "AMBOS os campos devem ser preenchidos!";
+	
 	header("location: index.php");
 	return;
 } else {
@@ -45,20 +49,31 @@ if (empty($nome) || empty($idade)) { //empty() verifica se uma variável está v
 				$_SESSION['ErroValidacaoDados'] = "É vedada a participação de competidores ABAIXO dos 6 anos!";
 				header("location: index.php");
 				return;
-			} else {
+			} 
+			
+			// else {
 				if ($idade >= 6 && $idade < 12) {
-					$SUCESSO = "O competidor " . $nome . " tem " . $idade . " anos e é da categoria " . $categorias[0] . ".";
+					$_SESSION['ValidacoesOK'] = "O competidor " . $nome . " tem " . $idade . " anos e é da categoria " . $categorias[0] . ".";
+					echo $_SESSION['ValidacoesOK'];
+					header("location: index.php");
+					return;
 				} elseif ($idade >= 12 && $idade < 18) {
-					$SUCESSO = "O competidor " . $nome . " tem " . $idade . " anos e é da categoria " . $categorias[1] . ".";
+					$_SESSION['ValidacoesOK'] = "O competidor " . $nome . " tem " . $idade . " anos e é da categoria " . $categorias[1] . ".";
+					echo $_SESSION['ValidacoesOK'];
+					header("location: index.php");
+					return;
 				} elseif ($idade >= 18) {
-					$SUCESSO = "O competidor " . $nome . " tem " . $idade . " anos e é da categoria " . $categorias[2] . ".";
+					$_SESSION['ValidacoesOK'] = "O competidor " . $nome . " tem " . $idade . " anos e é da categoria " . $categorias[2] . ".";
+					echo $_SESSION['ValidacoesOK'];
+					header("location: index.php");
+					return;
 				}
-				session_destroy();
-			}
+			// }
 		}
 	}
+	session_destroy();
 }
-?>
+/*
 <!doctype html>
 <html lang="en">
 
@@ -75,10 +90,16 @@ if (empty($nome) || empty($idade)) { //empty() verifica se uma variável está v
 <body>
 	<h4 class="text-danger text-center">
 		<?php
-		echo $SUCESSO;
+		echo $_SESSION['ValidacoesOK'];
 		?>
 	</h4>
 
 </body>
 
 </html>
+
+
+
+*/
+?>
+
