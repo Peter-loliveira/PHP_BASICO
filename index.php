@@ -63,7 +63,7 @@ session_start();
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-7">
-                <h6 class="text-white text-center mt-1 rounded border border-success bg-success">
+                <h6 class="text-white text-center mt-1 rounded border border-success bg-success p-2">
                     <?php
                         $MensagemSucesso = isset($_SESSION['ValidacoesOK']) ? $_SESSION['ValidacoesOK'] : "";
 
